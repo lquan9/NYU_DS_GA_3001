@@ -1,0 +1,50 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "python-project"
+version = "0.1.0"
+description = "Placeholder"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+  {name = "Long Quang", email = "longpquang@gmail.com"}
+]
+dependencies = [
+  "numpy>=1.23",
+  "scipy>=1.10",
+  "matplotlib>=3.7"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8",
+  "ruff>=0.5",
+  "mypy>=1.8",
+  "ipykernel>=6.29"
+]
+docs = [
+  "sphinx>=7.2",
+  "myst-nb>=1.1",
+  "sphinx-book-theme>=1.1",
+  "nbsphinx>=0.9",
+  "jupytext>=1.15"
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/python_project"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+addopts = "-ra"
+
+[tool.ruff]
+select = ["E", "F", "I", "UP", "B"]
+line-length = 88
+
+[tool.mypy]
+python_version = "3.9"
+strict = true
+packages = ["python_project"]
